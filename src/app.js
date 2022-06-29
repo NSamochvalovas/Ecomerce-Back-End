@@ -3,6 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const UserRouter = require('./routes/users');
+const AuthRouter = require('./routes/auth');
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ app.get('/', (req , res) => {
 }); 
 
 app.use('/users', UserRouter);
+app.use('/auth', AuthRouter);
 
 app.all('*', (req, res) => {
   res.status(404).send({ err:'pagen ot found' });

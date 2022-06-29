@@ -1,5 +1,5 @@
 const express = require('express');
-const {verifyAuth} = require('../middelware/verifyToken');
+const {verifyAuth, verifyAdmin} = require('../middelware/verifyToken');
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 
@@ -32,6 +32,18 @@ router.delete("/:id", verifyAuth, async (req, res) => {
 
   }catch(err){
     res.status(500).send({ msg:'Delete method not working' })
+  }
+});
+
+//Get all Users
+
+router.get("/", verifyAdmin, async (req, res) => {
+  try{
+    const users = await User.find(req.params.id)
+    res.status(200).json(users)
+
+  }catch(err){
+    res.status(500).send({ msg:'Something wrong with server' })
   }
 });
 

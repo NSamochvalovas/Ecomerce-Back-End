@@ -1,7 +1,7 @@
 const express = require('express');
-const {verifyAuth, verifyAdmin} = require('../middelware/verifyToken');
+const { verifyAdmin } = require('../middelware/verifyToken');
 const Product = require('../models/Product');
-const bcrypt = require('bcrypt');
+
 
 const router = express.Router();
 

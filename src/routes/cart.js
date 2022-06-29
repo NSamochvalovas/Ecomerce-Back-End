@@ -1,5 +1,5 @@
 const express = require('express');
-const {verifyAuth } = require('../middelware/verifyToken');
+const { verifyAuth } = require('../middelware/verifyToken');
 const Cart = require('../models/Cart');
 
 const router = express.Router();

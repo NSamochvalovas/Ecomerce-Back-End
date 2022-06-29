@@ -5,6 +5,8 @@ const dotenv = require('dotenv');
 const UserRouter = require('./routes/users');
 const AuthRouter = require('./routes/auth');
 const ProductRouter = require('./routes/product');
+const CartRouter = require('./routes/cart');
+const OrderRouter = require('./routes/order');
 
 dotenv.config();
 
@@ -23,6 +25,8 @@ app.get('/', (req , res) => {
 app.use('/users', UserRouter);
 app.use('/auth', AuthRouter);
 app.use('/products', ProductRouter);
+app.use('/cart', CartRouter);
+app.use('/orders', OrderRouter);
 
 app.all('*', (req, res) => {
   res.status(404).send({ err:'pagen ot found' });

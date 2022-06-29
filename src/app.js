@@ -7,6 +7,7 @@ const AuthRouter = require('./routes/auth');
 const ProductRouter = require('./routes/product');
 const CartRouter = require('./routes/cart');
 const OrderRouter = require('./routes/order');
+const StripeRouter = require('./routes/stripe');
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ app.use('/auth', AuthRouter);
 app.use('/products', ProductRouter);
 app.use('/cart', CartRouter);
 app.use('/orders', OrderRouter);
+app.use('/chekout', StripeRouter);
 
 app.all('*', (req, res) => {
   res.status(404).send({ err:'pagen ot found' });

@@ -23,4 +23,16 @@ router.put("/:id", verifyAuth, async (req, res) => {
   }
 });
 
+//Delete
+
+router.delete("/:id", verifyAuth, async (req, res) => {
+  try{
+    await User.findByIdAndDelete(req.params.id)
+    res.status(200).send({ msg:'User deleted' })
+
+  }catch(err){
+    res.status(500).send({ msg:'Delete method not working' })
+  }
+});
+
 module.exports = router;

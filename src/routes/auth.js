@@ -38,7 +38,7 @@ router.post("/login", async (req, res) => {
 
     const {password, ...others } = user._doc
 
-    res.status(200).json({others, Token});
+    res.status(200).json({...others, Token});
   }catch(err){
     console.log(err);
     res.status(500).send({ msg:"something wrong with the server" });

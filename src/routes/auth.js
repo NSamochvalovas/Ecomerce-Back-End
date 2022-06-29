@@ -1,6 +1,7 @@
 const express = require('express');
 const User = require('../models/User')
 const bcrypt = require('bcrypt');
+const jsonwebtoken = require('jsonwebtoken');
 
 const router = express.Router();
 
@@ -28,9 +29,16 @@ router.post("/login", async (req, res) => {
       return res.status(400).send({ msg:'Wrong password'});
     }
 
+    const Token = jsonwebtoken.sign({
+      id:user._id, 
+      isAdmin: user.isAdmin,
+    }, 
+    process.env.JWT_SECRECT
+  );
+
     const {password, ...others } = user._doc
 
-    res.status(200).json(others);
+    res.status(200).json({others, Token});
   }catch(err){
     console.log(err);
     res.status(500).send({ msg:"something wrong with the server" });

@@ -28,14 +28,6 @@ const verifyAuth = (req, res, next) => {
   });
 }
 
-const verifyAdmin = (req, res, next) => {
-  verifyToken(req,res, () =>{
-    if(req.user.isAdmin){
-      next();
-    } else{
-      res.status(401).send({ msg:'you are not allowed' })
-    }
-  });
-}
 
-module.exports = {verifyToken, verifyAuth, verifyAdmin}
+
+module.exports = {verifyToken, verifyAuth}

@@ -1,7 +1,5 @@
 const express = require('express');
 const Product = require('../models/Product');
-
-
 const router = express.Router();
 
 //Create
@@ -18,19 +16,6 @@ router.post('/', async (req,res) => {
   }
 
 })
-
-
-//Delete product
-
-// router.delete("/:id", verifyAdmin, async (req, res) => {
-//   try{
-//     await Product.findByIdAndDelete(req.params.id)
-//     res.status(200).send({ msg:'Product deleted' })
-
-//   }catch(err){
-//     res.status(500).send({ msg:'Delete method not working' })
-//   }
-// });
 
 //Get product
 

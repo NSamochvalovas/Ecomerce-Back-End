@@ -1,7 +1,6 @@
 const express = require('express');
 const { verifyAuth } = require('../middelware/verifyToken');
 const Cart = require('../models/Cart');
-
 const router = express.Router();
 
 //Create
@@ -16,8 +15,7 @@ router.post('/', verifyAuth, async (req,res) => {
     console.log(err)
     res.status(500).send({ msg:'Product was not added' });
   }
-
-})
+});
 
 //Get cart
 

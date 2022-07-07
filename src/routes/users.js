@@ -5,7 +5,7 @@ const router = express.Router();
 
 //Delete
 
-router.delete("/:id", verifyAuth, async (req, res) => {
+router.delete('/:id', verifyAuth, async (req, res) => {
   try{
     await User.findByIdAndDelete(req.params.id)
     res.status(200).send({ msg:'User deleted' })

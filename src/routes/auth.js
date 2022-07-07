@@ -6,6 +6,7 @@ const jsonwebtoken = require('jsonwebtoken');
 const router = express.Router();
 
 //Register
+
 router.post('/register', async (req, res) => {
   const newUser = new User({
     email: req.body.email,
@@ -20,7 +21,8 @@ router.post('/register', async (req, res) => {
 });
 
 //Login
-router.post("/login", async (req, res) => {
+
+router.post('/login', async (req, res) => {
   try{
     const user = await User.findOne({ email: req.body.email });
     !user && res.status(400).send({ msg:'No data' }) 
@@ -36,12 +38,12 @@ router.post("/login", async (req, res) => {
     process.env.JWT_SECRECT
   );
 
-    const {password, ...others } = user._doc
+    const { password, ...others } = user._doc
 
     res.status(200).json({...others, Token});
   }catch(err){
     console.log(err);
-    res.status(500).send({ msg:"something wrong with the server" });
+    res.status(500).send({ msg:'something wrong with the server' });
   }
 });
 
